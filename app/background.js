@@ -6,7 +6,6 @@ var path = _interopDefault(require('path'));
 var url = _interopDefault(require('url'));
 var electron = require('electron');
 var jetpack = _interopDefault(require('fs-jetpack'));
-var macaddress = _interopDefault(require('macaddress'));
 
 const devMenuTemplate = {
   label: 'Development',
@@ -132,9 +131,8 @@ var createWindow = (name, options) => {
 const env = jetpack.cwd(__dirname).read('env.json', 'json');
 
 // import zmq from 'zmq';
+
 const {exec} = require('child_process');
-
-
 
 const setApplicationMenu = () => {
   const menus = [editMenuTemplate];
@@ -177,16 +175,9 @@ electron.app.on('ready', () => {
   const nativeImage = require('electron').nativeImage;
   var imageIcon = nativeImage.createFromPath(__dirname + "/images/icon.ico");
   appIcon = new electron.Tray(imageIcon);
-  appIcon.setToolTip('設定自動登入,版本V0.1.0');//右下方icon顯示版號
+  appIcon.setToolTip('設定自動登入,版本V0.1.2');//右下方icon顯示版號
 
   // var fs = require('fs');
-
-  // //確認捷徑
-  // if(!fs.existsSync('C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp\\clientron_agent.lnk')){
-  //   //將捷徑放入工作排程
-  //   exec('cd %UserProfile% && cd ../Public && copy /Y Desktop\\clientron_agent.lnk "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp"',function(error, stdout, stderr){
-  //   });
-  // }
   
   // var ipc = require('electron').ipcMain;
 
@@ -220,13 +211,13 @@ electron.app.on('ready', () => {
   }));
   //
   // // if (env.name === 'development') {
-    mainWindow.openDevTools();
+    // mainWindow.openDevTools();
 
   // // }
 });
 
 electron.app.on('window-all-closed', () => {
-  // app.quit();
+  electron.app.quit();
 });
 
 }());

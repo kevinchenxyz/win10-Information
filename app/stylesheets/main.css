@@ -7,14 +7,22 @@ body {
 }
 body {
   display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: sans-serif;
   color: #525252;
 }
 a {
   text-decoration: none;
 }
+.deepskyblue {
+  color: deepskyblue;
+}
 .container {
-  text-align: center;
+  text-align: left;
+}
+pre {
+  width: 100%;
+  height: 100%;
+}
+#nodata {
+  display: none;
 }

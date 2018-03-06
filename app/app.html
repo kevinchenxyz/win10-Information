@@ -2,33 +2,67 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Windoew auto login settgin</title>
+  <title>Windoew Computer Informations</title>
+  <link href="stylesheets/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+  <!-- <link href="stylesheets/bootstrap-theme.min.css.map" rel="stylesheet" type="text/css"> -->
+  <link href="stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <!-- <link href="stylesheets/bootstrap.min.css.map" rel="stylesheet" type="text/css"> -->
   <link href="stylesheets/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+  <div class="row container">
+    <div class="col-xs-12">
+        <h1 id="greet"></h1>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <p>
+          <span class="glyphicon glyphicon-asterisk deepskyblue"></span>
+          IP Address: <span id="ipaddress"></span>
+        </p>
+        <p>
+          <span class="glyphicon glyphicon-asterisk deepskyblue"></span>
+          MAC Address: <span id="macaddress"></span>
+        </p>
+        <p>
+          <span class="glyphicon glyphicon-asterisk deepskyblue"></span>
+          Computer Name: <span id="hostname"></span>
+        </p>
+        <p>
+          <span class="glyphicon glyphicon-asterisk deepskyblue"></span>
+          Memory: <span id="memory"></span>
+        </p>
+        <p>
+          <span class="glyphicon glyphicon-asterisk deepskyblue"></span>
+          screen resolution: <span id="screen"></span>
+        </p>
+        <p>
+          <span class="glyphicon glyphicon-asterisk deepskyblue"></span>
+          Windows Version : <span id="versionString"></span>
+        </p>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <div id="cpuloop" ></div>
+      </div>
+      <div class="col-md-12 col-xs-12">
+          <p id="hotfixlist"></p>
+          <div id="loading">
+            <img src="./images/loading.gif">
+            <p>Get Hotfix information , Loading...</p>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      
+    </div>
 
-  <div class="container">
-    <h1 id="greet"></h1>
-    <p>
-      IP Address: <span id="ipaddress"></span>
-    </p>
-    <p>
-      MAC Address: <span id="macaddress"></span>
-    </p>
-    <p>
-      Computer Name: <span id="hostname"></span>
-    </p>
-    <div id="cpuloop" ></div>
-  </div>
-
-  <script src="app.js"></script>
-  <script src='jquery-3.3.1.min.js'></script>
-  <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
-  <script>
-  $(document).ready(function(){
-    
-    
-  })
-  </script>
+    <script src="app.js"></script>
+    <script src='jquery-3.3.1.min.js'></script>
+    <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+    <script>
+    $(document).ready(function(){
+      
+      
+    })
+    </script>
 </body>
 </html>
