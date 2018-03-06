@@ -2,7 +2,7 @@
   "name": "win10-information",
   "productName": "win10_information",
   "description": "show win10 system information",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "wininfo<steps>",
   "copyright": "© 2017, Gumby inc.",
   "homepage": "http://example.com",
@@ -22,7 +22,8 @@
       }
     ],
     "nsis": {
-      "perMachine": true
+      "perMachine": true,
+      "createDesktopShortcut": false
     }
   },
   "scripts": {

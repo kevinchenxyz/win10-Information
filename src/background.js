@@ -4,6 +4,7 @@ import url from 'url';
 import { app, Menu , Tray, BrowserWindow, ipcMain} from 'electron';
 import { devMenuTemplate } from './menu/dev_menu_template';
 import { editMenuTemplate } from './menu/edit_menu_template';
+import { aboutMenuTemplate } from './menu/about_menu_template.js';
 import createWindow from './helpers/window';
 // import zmq from 'zmq';
 
@@ -12,7 +13,7 @@ import env from './env';
 const {exec} = require('child_process');
 
 const setApplicationMenu = () => {
-  const menus = [editMenuTemplate];
+  const menus = [aboutMenuTemplate];
   if (env.name !== 'production') {
     menus.push(devMenuTemplate);
   }
@@ -52,7 +53,7 @@ app.on('ready', () => {
   const nativeImage = require('electron').nativeImage;
   var imageIcon = nativeImage.createFromPath(__dirname + "/images/icon.ico");
   appIcon = new Tray(imageIcon)
-  appIcon.setToolTip('設定自動登入,版本V0.1.2');//右下方icon顯示版號
+  appIcon.setToolTip('顯示本機資訊,版本V0.2.0');//右下方icon顯示版號
 
   const mainWindow = createWindow('main', {
     width: 1000,
@@ -67,7 +68,6 @@ app.on('ready', () => {
   //
   // // if (env.name === 'development') {
     // mainWindow.openDevTools();
-
   // // }
 });
 

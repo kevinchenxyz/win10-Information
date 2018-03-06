@@ -32,18 +32,12 @@ const devMenuTemplate = {
   }],
 };
 
-const editMenuTemplate = {
-  label: 'Edit',
-  submenu: [
-    { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
-    { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
-    { type: 'separator' },
-    { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
-    { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
-    { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
-    { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' },
-  ],
-};
+const aboutMenuTemplate = {
+    label: 'about',
+    submenu: [
+      { label: 'Version 0.1.2', accelerator: '0.1.2'},
+    ],
+  };
 
 // This helper remembers the size and position of your windows (and restores
 // them in that place after app relaunch).
@@ -135,7 +129,7 @@ const env = jetpack.cwd(__dirname).read('env.json', 'json');
 const {exec} = require('child_process');
 
 const setApplicationMenu = () => {
-  const menus = [editMenuTemplate];
+  const menus = [aboutMenuTemplate];
   if (env.name !== 'production') {
     menus.push(devMenuTemplate);
   }
@@ -175,29 +169,7 @@ electron.app.on('ready', () => {
   const nativeImage = require('electron').nativeImage;
   var imageIcon = nativeImage.createFromPath(__dirname + "/images/icon.ico");
   appIcon = new electron.Tray(imageIcon);
-  appIcon.setToolTip('設定自動登入,版本V0.1.2');//右下方icon顯示版號
-
-  // var fs = require('fs');
-  
-  // var ipc = require('electron').ipcMain;
-
-  // ipc.on('invokeAction', function(event, data) {
-  //   var fs = require('fs');
-  //   var reqCommand = 'Windows Registry Editor Version 5.00\r\n';
-  //   reqCommand += '\r\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon]\r\n';
-  //   reqCommand += '\r\n"AutoAdminLogon"="1"\r\n';
-  //   reqCommand += '"DefaultUserName"="'+data.account+'"\r\n';
-  //   reqCommand += '"DefaultPassword"="'+data.pwd+'"\r\n';
-  //   reqCommand += '"AutoAdminLogon"="1"\r\n';
-  //   fs.writeFile("C:\\TRMConf\\AutoLogin.reg", reqCommand,function (err){
-  //     if(err) {
-  //       return console.log(err);
-  //     }
-  //     exec('C:\\TRMConf\\AutoLogin.reg',function(res){});
-  //     // alert('svsae');
-  //   });
-  // });
-
+  appIcon.setToolTip('顯示本機資訊,版本V0.2.0');//右下方icon顯示版號
 
   const mainWindow = createWindow('main', {
     width: 1000,
@@ -212,7 +184,6 @@ electron.app.on('ready', () => {
   //
   // // if (env.name === 'development') {
     // mainWindow.openDevTools();
-
   // // }
 });
 
