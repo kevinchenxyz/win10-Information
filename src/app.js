@@ -86,8 +86,8 @@ var getHotFix = function () {
     noProfile: true
   });
   
-  ps.addCommand('get-hotfix -Description "Hotfix*" > ./hotfix.log');
-  // ps.addCommand('get-hotfix > ./hotfix.log');
+  // ps.addCommand('get-hotfix -Description "Hotfix*" > ./hotfix.log');
+  ps.addCommand('get-hotfix > ./hotfix.log');
   ps.invoke()
   .then(output => {
     var gethotfix = output;

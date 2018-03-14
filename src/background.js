@@ -53,7 +53,7 @@ app.on('ready', () => {
   const nativeImage = require('electron').nativeImage;
   var imageIcon = nativeImage.createFromPath(__dirname + "/images/icon.ico");
   appIcon = new Tray(imageIcon)
-  appIcon.setToolTip('顯示本機資訊,版本V0.2.0');//右下方icon顯示版號
+  appIcon.setToolTip('顯示本機資訊,版本V0.2.1');//右下方icon顯示版號
 
   const mainWindow = createWindow('main', {
     width: 1000,
