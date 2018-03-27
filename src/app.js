@@ -40,7 +40,6 @@ const osMap = {
 const pressenv = process.env;
 var language = pressenv.LANG || pressenv.LANGUAGE || pressenv.LC_ALL || pressenv.LC_MESSAGES;
 var language_code = null;
-console.log(process);
 if(language){
   language = language.toLowerCase();
   language = language.split('.');
@@ -95,8 +94,20 @@ var getHotFix = function () {
     var lineReader = require('readline').createInterface({
       input: require('fs').createReadStream('./hotfix.log')
     });
+    var txtcount = 0;
     lineReader.on('line', function (line) {
-      showhotfixlist += line.toString().trim()+'<br>';
+      
+      if(txtcount > 4){
+        var computerName = line.substr(0,26);
+        if(os.hostname().length > 14){
+          var nosourcename = line.slice(26);
+          line = os.hostname() + nosourcename;
+        }
+      }
+      if(txtcount > 1 ){
+        showhotfixlist += line.toString().trim()+'<br>';
+      }
+      txtcount ++;
     });
 
     setTimeout( function() {
