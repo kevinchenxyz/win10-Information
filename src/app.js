@@ -86,7 +86,7 @@ var getHotFix = function () {
   });
   
   // ps.addCommand('get-hotfix -Description "Hotfix*" > ./hotfix.log');
-  ps.addCommand('get-hotfix > ./hotfix.log');
+  ps.addCommand('get-hotfix | format-table -autosize > ./hotfix.log');
   ps.invoke()
   .then(output => {
     var gethotfix = output;
@@ -96,14 +96,14 @@ var getHotFix = function () {
     });
     var txtcount = 0;
     lineReader.on('line', function (line) {
-      
-      if(txtcount > 4){
-        var computerName = line.substr(0,26);
-        if(os.hostname().length > 14){
-          var nosourcename = line.slice(26);
-          line = os.hostname() + nosourcename;
-        }
-      }
+      // showhotfixlist += line.toString().trim()+'<br>';
+      // if(txtcount > 4){
+      //   var computerName = line.substr(0,26);
+      //   if(os.hostname().length > 14){
+      //     var nosourcename = line.slice(26);
+      //     line = os.hostname() + nosourcename;
+      //   }
+      // }
       if(txtcount > 1 ){
         showhotfixlist += line.toString().trim()+'<br>';
       }
