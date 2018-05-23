@@ -126,6 +126,56 @@ var getHotFix = function () {
 }
 getHotFix();
 
+var formatIpaddress = function (ipobj) {
+  var rtdata='';
+  Object.keys(ipobj).forEach(function (ifname) {
+    var alias = 0;
+  
+    ipobj[ifname].forEach(function (iface) {
+      if ('IPv4' !== iface.family || iface.internal !== false) {
+        // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+        return;
+      }
+  
+      if (alias >= 1) {
+        // this single interface has multiple ipv4 addresses
+        rtdata += '<span>' + iface.address + ' </span>';
+        // console.log(ifname + ':' + alias, iface.address);
+      } else {
+        // this interface has only one ipv4 adress
+        // console.log(ifname, iface.address);
+        rtdata += '<span>'+ iface.address + ' </span>';
+      }
+      ++alias;
+    });
+  });
+  return rtdata;
+}
+var formatMacaddress = function (ipobj) {
+  var rtdata='';
+  Object.keys(ipobj).forEach(function (ifname) {
+    var alias = 0;
+  
+    ipobj[ifname].forEach(function (iface) {
+      if ('IPv4' !== iface.family || iface.internal !== false) {
+        // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+        return;
+      }
+  
+      if (alias >= 1) {
+        // this single interface has multiple ipv4 addresses
+        rtdata += '<span>' + iface.mac + ' </span>';
+        // console.log(ifname + ':' + alias, iface.address);
+      } else {
+        // this interface has only one ipv4 adress
+        // console.log(ifname, iface.address);
+        rtdata += '<span>'+ iface.mac + ' </span>';
+      }
+      ++alias;
+    });
+  });
+  return rtdata;
+}
 //item title
 document.querySelector('#greet').innerHTML = itemName.title;
 document.querySelector('#ip_address').innerHTML = itemName.ip_address;
@@ -138,9 +188,11 @@ document.querySelector('#hotfix_imformations').innerHTML = itemName.hotfix;
 
 //content
 var noconnectmsg = '<span style="color:orange;">Network is not connected</span>';
-if(os.networkInterfaces()['Ethernet']){
-  document.querySelector('#ipaddress').innerHTML = os.networkInterfaces()['Ethernet']['1'].address;
-  document.querySelector('#macaddress').innerHTML = os.networkInterfaces()['Ethernet']['1'].mac;
+// console.log(os.networkInterfaces());
+formatIpaddress(os.networkInterfaces());
+if(formatIpaddress(os.networkInterfaces()) && formatMacaddress(os.networkInterfaces())){
+  document.querySelector('#ipaddress').innerHTML = formatIpaddress(os.networkInterfaces());
+  document.querySelector('#macaddress').innerHTML = formatMacaddress(os.networkInterfaces());
 } else {
   document.querySelector('#ipaddress').innerHTML = noconnectmsg;
   document.querySelector('#macaddress').innerHTML = noconnectmsg;

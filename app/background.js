@@ -35,7 +35,7 @@ const devMenuTemplate = {
 const aboutMenuTemplate = {
     label: 'about',
     submenu: [
-      { label: 'Version 0.1.2', accelerator: '0.1.2'},
+      { label: 'Version 0.2.4', accelerator: '0.2.4'},
     ],
   };
 
@@ -169,7 +169,7 @@ electron.app.on('ready', () => {
   const nativeImage = require('electron').nativeImage;
   var imageIcon = nativeImage.createFromPath(__dirname + "/images/icon.ico");
   appIcon = new electron.Tray(imageIcon);
-  appIcon.setToolTip('顯示本機資訊,版本V0.2.0');//右下方icon顯示版號
+  appIcon.setToolTip('Computer Informations, V0.2.4');//右下方icon顯示版號
 
   const mainWindow = createWindow('main', {
     width: 1000,
